@@ -1,13 +1,13 @@
 plugins {
     id 'java'
-    id 'io.qameta.allure' version '2.10.0'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
 allure {
-    report {
+    report { //секция репорта
         version.set("2.19.0")
     }
     adapter { // отвечает за появление папочки build/allure-results
@@ -24,10 +24,17 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava{
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation(
             'org.junit.jupiter:junit-jupiter-api:5.9.0',
-            'com.codeborne:selenide:6.7.2',
+            'com.codeborne:selenide:6.19.1',
             'io.qameta.allure:allure-selenide:2.19.0'
     )
 

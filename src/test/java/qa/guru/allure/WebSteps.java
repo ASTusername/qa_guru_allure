@@ -22,9 +22,9 @@ public class WebSteps {
 
     @Step("Ищем репозиторий {repo}")
     public void searchForRepository(String repo) {
-        $(".header-search-input").click();
-        $(".header-search-input").sendKeys(repo);
-        $(".header-search-input").submit();
+        $("[data-target='qbsearch-input.inputButtonText']").click();
+        $("#query-builder-test").sendKeys(repo);
+        $("#query-builder-test").submit();
     }
 
     @Step("Кликаем по ссылке репозитория {repo}")
@@ -40,10 +40,5 @@ public class WebSteps {
     @Step("Проверяем наличие Issue с номером {issue}")
     public void shouldSeeIssueWithNumber(int issue) {
         $(withText("#" + issue)).should(Condition.exist);
-    }
-
-    @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
-    public byte[] takeScreenshot() {
-        return ((TakesScreenshot)WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
